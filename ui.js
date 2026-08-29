@@ -1,0 +1,6 @@
+const $=s=>document.querySelector(s);let homeHigh=Number(localStorage.getItem('tahuRushHigh')||0);function fmt(n){return String(Math.max(0,n)).padStart(4,'0')}
+function updateHigh(){homeHigh=Number(localStorage.getItem('tahuRushHigh')||0);$('#homeHigh').textContent=fmt(homeHigh);$('#highScore').textContent=fmt(homeHigh)}
+function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active')}
+function modal(id,on){$('#'+id).classList.toggle('show',on)}
+function setSoundLabels(){const t=audioEnabled?'🔊 SUARA':'🔇 SUARA';$('#homeSound').textContent=audioEnabled?'🔊':'🔇';$('#pauseSound').textContent=t}
+$('#playBtn').onclick=()=>{ensureAudio();sfx('click');show('gameScreen');startGame()};$('#pauseBtn').onclick=()=>pauseGame();$('#resumeBtn').onclick=()=>resumeGame();$('#restartPause').onclick=()=>{modal('pauseModal',false);startGame()};$('#homePause').onclick=()=>{modal('pauseModal',false);stopGame();show('homeScreen');updateHigh()};$('#againBtn').onclick=()=>{modal('gameOverModal',false);startGame()};$('#homeOver').onclick=()=>{modal('gameOverModal',false);show('homeScreen');updateHigh()};$('#homeSound').onclick=()=>{toggleAudio();setSoundLabels()};$('#pauseSound').onclick=()=>{toggleAudio();setSoundLabels()};updateHigh();setSoundLabels();
