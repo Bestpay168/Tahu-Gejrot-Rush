@@ -1,0 +1,7 @@
+let audioEnabled=true,audioCtx=null,musicTimer=null;
+function ensureAudio(){if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume()}
+function tone(freq,dur,type='sine',gain=.045,delay=0){if(!audioEnabled)return;ensureAudio();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(0,audioCtx.currentTime+delay);g.gain.linearRampToValueAtTime(gain,audioCtx.currentTime+delay+.01);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+delay+dur);o.connect(g).connect(audioCtx.destination);o.start(audioCtx.currentTime+delay);o.stop(audioCtx.currentTime+delay+dur+.02)}
+function sfx(kind){if(kind==='tofu'){tone(520,.09,'sine',.06);tone(760,.12,'sine',.05,.06)}else if(kind==='chili'){tone(650,.08,'triangle',.06);tone(980,.14,'triangle',.05,.06)}else if(kind==='bomb'){tone(120,.2,'sawtooth',.08);tone(70,.3,'sawtooth',.07,.1)}else if(kind==='over'){tone(420,.15,'sine',.05);tone(300,.18,'sine',.05,.15);tone(180,.3,'sine',.05,.32)}else if(kind==='click')tone(700,.06,'square',.03)}
+function startMusic(){if(!audioEnabled||musicTimer)return;ensureAudio();const notes=[261.6,329.6,392,329.6,293.7,349.2,440,349.2];let i=0;musicTimer=setInterval(()=>{if(window.gameState==='playing')tone(notes[i++%notes.length],.12,'sine',.012)},280)}
+function stopMusic(){clearInterval(musicTimer);musicTimer=null}
+function toggleAudio(){audioEnabled=!audioEnabled;if(!audioEnabled)stopMusic();else{ensureAudio();startMusic()}return audioEnabled}
