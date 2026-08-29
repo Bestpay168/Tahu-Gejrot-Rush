@@ -16,7 +16,7 @@ function drawPlayer(){ctx.save();ctx.translate(player.x,player.y);const moving=k
 function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
 function bindHold(id,key){const b=document.getElementById(id);['pointerdown','touchstart'].forEach(e=>b.addEventListener(e,ev=>{ev.preventDefault();keys[key]=true},{passive:false}));['pointerup','pointercancel','pointerleave','touchend'].forEach(e=>b.addEventListener(e,ev=>{ev.preventDefault();keys[key]=false},{passive:false}))}bindHold('leftBtn','left');bindHold('rightBtn','right');window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')keys.left=true;if(e.key==='ArrowRight')keys.right=true});window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft')keys.left=false;if(e.key==='ArrowRight')keys.right=false});let swipeX=null;canvas.addEventListener('pointerdown',e=>swipeX=e.clientX);canvas.addEventListener('pointermove',e=>{if(swipeX!==null){const dx=e.clientX-swipeX;if(Math.abs(dx)>8){player.x+=dx*.9;player.x=Math.max(48,Math.min(W-48,player.x));swipeX=e.clientX}}});canvas.addEventListener('pointerup',()=>swipeX=null);canvas.addEventListener('pointercancel',()=>swipeX=null);
 
-```js
+
 /* =========================================================
    TOUCH / SWIPE CONTROL
    Geser jari langsung untuk menggerakkan karakter
