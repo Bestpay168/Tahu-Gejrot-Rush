@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#ff4f9a">
+<title>TAHU GEJROT RUSH</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <main id="homeScreen" class="screen active">
+    <button id="homeSound" class="icon-btn" aria-label="Suara">🔊</button>
+    <div class="home-glow"></div>
+    <div class="brand"><span>TAHU GEJROT</span><strong>RUSH</strong></div>
+    <p class="tagline">SEBERAPA TINGGI SKORMU?</p>
+    <div class="mascot-home" aria-hidden="true"><div class="mascot-head"><div class="hair"></div><div class="eye e1"></div><div class="eye e2"></div><div class="smile"></div></div><div class="body"><span>TAHU GEJROT<br>PAKDE BURUNG</span></div><div class="jeans"></div></div>
+    <button id="playBtn" class="main-btn">▶ <span>PLAY</span></button>
+    <div class="high-card">🏆 <span>HIGH SCORE</span><b id="homeHigh">0000</b></div>
+    <p class="hint">Geser karakter atau gunakan tombol kiri / kanan</p>
+  </main>
+
+  <main id="gameScreen" class="screen">
+    <div class="hud"><div><small>SCORE</small><b id="score">0000</b></div><div><small>HIGH SCORE</small><b id="highScore">0000</b></div><div><small>LIFE</small><b id="life">❤️❤️❤️</b></div></div>
+    <button id="pauseBtn" class="small-btn">Ⅱ</button>
+    <canvas id="gameCanvas" width="420" height="700"></canvas>
+    <div class="controls"><button id="leftBtn">◀</button><button id="rightBtn">▶</button></div>
+  </main>
+
+  <div id="pauseModal" class="modal"><div class="panel"><h2>PAUSE</h2><button id="resumeBtn" class="green">▶ RESUME</button><button id="restartPause" class="orange">↻ RESTART</button><button id="homePause" class="blue">⌂ HOME</button><button id="pauseSound" class="sound-btn">🔊 SUARA</button></div></div>
+  <div id="gameOverModal" class="modal"><div class="panel gameover"><div class="confetti">✦ ✧ ✦</div><h2>GAME OVER</h2><p>Score</p><strong id="finalScore">0000</strong><p>High Score</p><strong id="finalHigh">0000</strong><div id="newHigh" class="new-high">🏆 NEW HIGH SCORE!</div><button id="againBtn" class="green">▶ PLAY AGAIN</button><button id="homeOver" class="blue">⌂ HOME</button></div></div>
+</div>
+<script src="js/audio.js"></script><script src="js/ui.js"></script><script src="js/game.js"></script>
+</body>
+</html>
