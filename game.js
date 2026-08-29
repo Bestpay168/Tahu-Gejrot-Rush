@@ -15,3 +15,105 @@ function drawObject(o){ctx.save();ctx.translate(o.x,o.y);ctx.rotate(o.rot);if(o.
 function drawPlayer(){ctx.save();ctx.translate(player.x,player.y);const moving=keys.left||keys.right;ctx.rotate(moving?(keys.left?-.05:.05):0);ctx.fillStyle='#fff';ctx.beginPath();ctx.ellipse(-22,43,20,8,0,0,Math.PI*2);ctx.ellipse(22,43,20,8,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#3975bb';ctx.fillRect(-28,4,56,42);ctx.fillStyle='#ff5b96';roundRect(-31,-5,62,55,18);ctx.fill();ctx.fillStyle='#fff';ctx.font='900 6px Arial';ctx.textAlign='center';ctx.fillText('TAHU GEJROT',0,21);ctx.fillText('PAKDE BURUNG',0,29);ctx.fillStyle='#ffd1b4';ctx.beginPath();ctx.arc(0,-39,37,0,Math.PI*2);ctx.fill();ctx.fillStyle='#e6aa56';ctx.beginPath();ctx.arc(0,-47,39,Math.PI,Math.PI*2);ctx.fill();ctx.fillRect(-38,-48,12,34);ctx.fillRect(26,-48,12,34);ctx.fillStyle='#4a2a22';ctx.beginPath();ctx.ellipse(-12,-40,5,8,0,0,Math.PI*2);ctx.ellipse(12,-40,5,8,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(-13,-43,2,0,Math.PI*2);ctx.arc(11,-43,2,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#bd5360';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,-29,10,0,Math.PI);ctx.stroke();ctx.restore()}
 function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
 function bindHold(id,key){const b=document.getElementById(id);['pointerdown','touchstart'].forEach(e=>b.addEventListener(e,ev=>{ev.preventDefault();keys[key]=true},{passive:false}));['pointerup','pointercancel','pointerleave','touchend'].forEach(e=>b.addEventListener(e,ev=>{ev.preventDefault();keys[key]=false},{passive:false}))}bindHold('leftBtn','left');bindHold('rightBtn','right');window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')keys.left=true;if(e.key==='ArrowRight')keys.right=true});window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft')keys.left=false;if(e.key==='ArrowRight')keys.right=false});let swipeX=null;canvas.addEventListener('pointerdown',e=>swipeX=e.clientX);canvas.addEventListener('pointermove',e=>{if(swipeX!==null){const dx=e.clientX-swipeX;if(Math.abs(dx)>8){player.x+=dx*.9;player.x=Math.max(48,Math.min(W-48,player.x));swipeX=e.clientX}}});canvas.addEventListener('pointerup',()=>swipeX=null);canvas.addEventListener('pointercancel',()=>swipeX=null);
+
+```js
+/* =========================================================
+   TOUCH / SWIPE CONTROL
+   Geser jari langsung untuk menggerakkan karakter
+========================================================= */
+
+let touchActive = false;
+let touchLastX = 0;
+
+canvas.style.touchAction = 'none';
+
+
+/* Jari mulai menyentuh canvas */
+canvas.addEventListener('pointerdown', function(e){
+
+    if(e.pointerType === 'mouse') return;
+
+    touchActive = true;
+
+    touchLastX = e.clientX;
+
+    canvas.setPointerCapture(e.pointerId);
+
+    e.preventDefault();
+
+}, {passive:false});
+
+
+/* Jari digeser */
+canvas.addEventListener('pointermove', function(e){
+
+    if(!touchActive) return;
+
+    if(e.pointerType === 'mouse') return;
+
+    e.preventDefault();
+
+    const rect = canvas.getBoundingClientRect();
+
+    /*
+       Ubah gerakan layar menjadi koordinat game.
+       Ini penting karena ukuran canvas di HP
+       bisa berbeda dengan ukuran internal 420px.
+    */
+    const scaleX = W / rect.width;
+
+    const dx = (e.clientX - touchLastX) * scaleX;
+
+    player.x += dx;
+
+    /*
+       Batasi karakter agar tidak keluar
+       dari area permainan.
+    */
+    const minX = 48;
+    const maxX = W - 48;
+
+    player.x = Math.max(
+        minX,
+        Math.min(maxX, player.x)
+    );
+
+    touchLastX = e.clientX;
+
+}, {passive:false});
+
+
+/* Jari dilepas */
+canvas.addEventListener('pointerup', function(e){
+
+    touchActive = false;
+
+    try{
+        canvas.releasePointerCapture(e.pointerId);
+    }catch(err){}
+
+}, {passive:false});
+
+
+/* Touch dibatalkan */
+canvas.addEventListener('pointercancel', function(e){
+
+    touchActive = false;
+
+    try{
+        canvas.releasePointerCapture(e.pointerId);
+    }catch(err){}
+
+}, {passive:false});
+
+
+/* Jari keluar dari canvas */
+canvas.addEventListener('pointerleave', function(){
+
+    if(touchActive){
+        touchActive = false;
+    }
+
+});
+
+
