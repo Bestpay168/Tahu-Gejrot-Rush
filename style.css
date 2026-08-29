@@ -1,1 +1,1332 @@
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial,Helvetica,sans-serif;background:#071c35;color:#fff}button{font:inherit;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}#app{width:100%;height:100%;position:relative}.screen{display:none;width:100%;height:100%;position:absolute;inset:0;overflow:hidden}.screen.active{display:flex}.icon-btn,.small-btn{position:absolute;z-index:20;border-radius:50%;background:#fff2;border:2px solid #fff8;color:#fff;box-shadow:0 5px 15px #0004;font-size:22px}.icon-btn{top:max(14px,env(safe-area-inset-top));right:14px;width:48px;height:48px}.home-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,#ff6ba522,transparent 68%);top:5%;left:50%;transform:translateX(-50%)}#homeScreen{align-items:center;flex-direction:column;text-align:center;background:linear-gradient(180deg,#1687c7 0%,#62c8df 48%,#f7a85a 100%)}#homeScreen:after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(#9b552000,#75401f99),repeating-linear-gradient(90deg,#6b3518 0 45px,#87451d 45px 90px);opacity:.5}.brand{position:relative;z-index:2;margin-top:8vh;font-weight:900;font-size:clamp(34px,10vw,62px);line-height:.86;text-shadow:0 5px 0 #7c3214,0 8px 18px #0004;transform:rotate(-2deg)}.brand span{display:block;color:#fff0a6}.brand strong{display:block;color:#ff4d87;font-size:1.2em;-webkit-text-stroke:2px white}.tagline{position:relative;z-index:3;margin:12px 0 0;background:#783e20;padding:9px 18px;border-radius:18px;font-weight:900;font-size:12px;box-shadow:0 4px 0 #4c2617}.mascot-home{position:relative;z-index:3;width:170px;height:290px;margin-top:15px;animation:idle 2.4s ease-in-out infinite}.mascot-head{position:absolute;top:0;left:15px;width:140px;height:140px;border-radius:48% 48% 45% 45%;background:linear-gradient(135deg,#fff0db,#ffd0af);box-shadow:inset -8px -10px 15px #d8896b55,0 8px 20px #0003}.hair{position:absolute;inset:-13px -5px 35px;border-radius:50% 50% 45% 50%;background:linear-gradient(135deg,#fff1a6,#d99a4c);z-index:-1}.eye{position:absolute;top:58px;width:18px;height:25px;background:#54301e;border-radius:50%;box-shadow:inset 5px 4px 0 #fff}.e1{left:38px}.e2{right:38px}.smile{position:absolute;width:32px;height:16px;left:54px;top:94px;border-bottom:4px solid #b74659;border-radius:50%}.body{position:absolute;top:128px;left:35px;width:100px;height:100px;border-radius:30px 30px 15px 15px;background:linear-gradient(135deg,#ff7ab0,#e83d78);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;box-shadow:inset -8px -8px 12px #a9285c44}.jeans{position:absolute;top:210px;left:38px;width:94px;height:70px;background:linear-gradient(90deg,#4b8bd4 0 48%,#3771b9 48% 52%,#4b8bd4 52%);border-radius:8px 8px 30px 30px}.main-btn{position:relative;z-index:5;width:min(300px,78vw);padding:18px;border-radius:22px;background:linear-gradient(#ffd34f,#ff9d16);color:#fff;font-size:26px;font-weight:900;text-shadow:0 3px #9d5013;box-shadow:0 7px 0 #a84e14,0 14px 25px #0004}.main-btn:active{transform:translateY(5px);box-shadow:0 2px 0 #a84e14}.high-card{position:relative;z-index:5;margin-top:20px;min-width:220px;padding:10px 18px;border-radius:18px;background:#063566dd;border:2px solid #ffffff33;display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:center}.high-card span{font-size:11px;font-weight:800;text-align:left}.high-card b{grid-column:2;font-size:22px}.hint{position:absolute;z-index:5;bottom:12px;font-size:10px;opacity:.85}.hud{position:absolute;z-index:10;top:max(10px,env(safe-area-inset-top));left:8px;right:58px;display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:5px}.hud div{background:#062e5ccc;border:1px solid #ffffff33;border-radius:12px;padding:6px 8px;text-align:center;box-shadow:0 4px 12px #0003}.hud small{display:block;font-size:8px;font-weight:800}.hud b{display:block;font-size:18px;color:#fff39b}.hud div:nth-child(2) b{color:#ffd23e}.hud div:nth-child(3) b{font-size:13px;white-space:nowrap}.small-btn{top:max(10px,env(safe-area-inset-top));right:8px;width:42px;height:42px;font-weight:900}.gameScreen{}.gameScreen canvas{width:100%;height:100%}#gameCanvas{position:absolute;inset:0;width:100%;height:100%;background:#64c8e6}.controls{position:absolute;z-index:15;bottom:max(12px,env(safe-area-inset-bottom));left:0;right:0;display:flex;justify-content:space-between;padding:0 18px;pointer-events:none}.controls button{pointer-events:auto;width:78px;height:64px;border-radius:22px;background:linear-gradient(#ffd75a,#ff9b16);color:#fff;font-size:32px;font-weight:900;text-shadow:0 3px #9b4a11;border:3px solid #fff;box-shadow:0 6px 0 #a94d12,0 8px 20px #0004}.controls button:active{transform:translateY(4px);box-shadow:0 2px 0 #a94d12}.modal{position:absolute;inset:0;z-index:50;background:#04152ab8;backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.panel{width:min(340px,90vw);padding:25px 22px;border-radius:28px;background:linear-gradient(145deg,#713c21,#3d2115);border:3px solid #ffcf59;box-shadow:0 20px 50px #0008;text-align:center}.panel h2{margin:0 0 18px;font-size:36px;color:#ffd64d;text-shadow:0 4px #742e10}.panel button{display:block;width:100%;margin:10px 0;padding:14px;border-radius:16px;color:#fff;font-weight:900;font-size:18px;box-shadow:0 5px 0 #0005}.green{background:linear-gradient(#61e83c,#20a925)}.orange{background:linear-gradient(#ffc340,#ed7414)}.blue{background:linear-gradient(#55b8ff,#1870d5)}.sound-btn{background:#ffffff22;border:1px solid #fff4;font-size:14px!important}.gameover h2{font-size:40px}.gameover p{margin:7px 0 0;font-size:13px;opacity:.8}.gameover>strong{display:block;font-size:30px;color:#fff}.new-high{display:none;color:#ffe34d;font-weight:900;margin:12px 0;animation:pulse .8s infinite alternate}.new-high.show{display:block}.confetti{font-size:28px;color:#ffcc4d}.panel.gameover{animation:pop .35s ease-out}@keyframes idle{50%{transform:translateY(-8px) rotate(1deg)}}@keyframes pop{from{transform:scale(.75);opacity:0}to{transform:scale(1);opacity:1}}@keyframes pulse{to{transform:scale(1.06)}}@media(min-width:600px){#gameScreen{max-width:480px;left:50%;transform:translateX(-50%);box-shadow:0 0 50px #0006}.screen:not(#gameScreen){max-width:480px;left:50%;transform:translateX(-50%)}}@media(max-height:650px){.brand{margin-top:4vh}.mascot-home{transform:scale(.78);margin-top:-2px;margin-bottom:-40px}.high-card{margin-top:10px}.hint{display:none}}@media(max-width:340px){.hud b{font-size:15px}.controls button{width:68px;height:58px}.brand{font-size:32px}}
+
+/* =========================================================
+   TAHU GEJROT RUSH
+   FINAL STYLE.CSS
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    background:#071c35;
+    color:#fff;
+
+    overscroll-behavior:none;
+}
+
+body{
+    touch-action:manipulation;
+}
+
+
+/* =========================================================
+   BUTTON RESET
+========================================================= */
+
+button{
+    font:inherit;
+    border:0;
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+#app{
+    position:relative;
+
+    width:100%;
+    height:100dvh;
+
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+.screen{
+    display:none;
+
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100dvh;
+
+    overflow:hidden;
+}
+
+.screen.active{
+    display:flex;
+}
+
+
+/* =========================================================
+   HOME SCREEN
+========================================================= */
+
+#homeScreen{
+    position:absolute;
+
+    align-items:center;
+    justify-content:flex-start;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1687c7 0%,
+            #62c8df 48%,
+            #f7a85a 100%
+        );
+}
+
+#homeScreen::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:35%;
+
+    background:
+        linear-gradient(
+            #9b552000,
+            #75401f99
+        ),
+        repeating-linear-gradient(
+            90deg,
+            #6b3518 0 45px,
+            #87451d 45px 90px
+        );
+
+    opacity:.5;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   HOME SOUND
+========================================================= */
+
+.icon-btn{
+    position:absolute;
+
+    z-index:20;
+
+    top:max(14px,env(safe-area-inset-top));
+    right:14px;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    background:#fff2;
+
+    border:2px solid #fff8;
+
+    color:#fff;
+
+    box-shadow:
+        0 5px 15px #0004;
+
+    font-size:22px;
+}
+
+
+/* =========================================================
+   HOME GLOW
+========================================================= */
+
+.home-glow{
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff6ba522,
+            transparent 68%
+        );
+
+    top:5%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand{
+    position:relative;
+
+    z-index:2;
+
+    margin-top:8vh;
+
+    font-weight:900;
+
+    font-size:clamp(
+        34px,
+        10vw,
+        62px
+    );
+
+    line-height:.86;
+
+    text-shadow:
+        0 5px 0 #7c3214,
+        0 8px 18px #0004;
+
+    transform:rotate(-2deg);
+}
+
+.brand span{
+    display:block;
+
+    color:#fff0a6;
+}
+
+.brand strong{
+    display:block;
+
+    color:#ff4d87;
+
+    font-size:1.2em;
+
+    -webkit-text-stroke:2px white;
+}
+
+
+/* =========================================================
+   TAGLINE
+========================================================= */
+
+.tagline{
+    position:relative;
+
+    z-index:3;
+
+    margin:12px 0 0;
+
+    padding:9px 18px;
+
+    border-radius:18px;
+
+    background:#783e20;
+
+    font-weight:900;
+
+    font-size:12px;
+
+    box-shadow:
+        0 4px 0 #4c2617;
+}
+
+
+/* =========================================================
+   MASCOT
+========================================================= */
+
+.mascot-home{
+    position:relative;
+
+    z-index:3;
+
+    width:170px;
+    height:290px;
+
+    margin-top:15px;
+
+    animation:
+        idle 2.4s ease-in-out infinite;
+}
+
+.mascot-head{
+    position:absolute;
+
+    top:0;
+    left:15px;
+
+    width:140px;
+    height:140px;
+
+    border-radius:
+        48% 48% 45% 45%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0db,
+            #ffd0af
+        );
+
+    box-shadow:
+        inset -8px -10px 15px #d8896b55,
+        0 8px 20px #0003;
+}
+
+.hair{
+    position:absolute;
+
+    inset:-13px -5px 35px;
+
+    border-radius:
+        50% 50% 45% 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1a6,
+            #d99a4c
+        );
+
+    z-index:-1;
+}
+
+.eye{
+    position:absolute;
+
+    top:58px;
+
+    width:18px;
+    height:25px;
+
+    background:#54301e;
+
+    border-radius:50%;
+
+    box-shadow:
+        inset 5px 4px 0 #fff;
+}
+
+.e1{
+    left:38px;
+}
+
+.e2{
+    right:38px;
+}
+
+.smile{
+    position:absolute;
+
+    width:32px;
+    height:16px;
+
+    left:54px;
+    top:94px;
+
+    border-bottom:
+        4px solid #b74659;
+
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   MASCOT BODY
+========================================================= */
+
+.body{
+    position:absolute;
+
+    top:128px;
+    left:35px;
+
+    width:100px;
+    height:100px;
+
+    border-radius:
+        30px 30px 15px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff7ab0,
+            #e83d78
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:8px;
+    font-weight:900;
+
+    box-shadow:
+        inset -8px -8px 12px #a9285c44;
+}
+
+.jeans{
+    position:absolute;
+
+    top:210px;
+    left:38px;
+
+    width:94px;
+    height:70px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4b8bd4 0 48%,
+            #3771b9 48% 52%,
+            #4b8bd4 52%
+        );
+
+    border-radius:
+        8px 8px 30px 30px;
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
+
+.main-btn{
+    position:relative;
+
+    z-index:5;
+
+    width:min(300px,78vw);
+
+    padding:18px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            #ffd34f,
+            #ff9d16
+        );
+
+    color:#fff;
+
+    font-size:26px;
+
+    font-weight:900;
+
+    text-shadow:
+        0 3px #9d5013;
+
+    box-shadow:
+        0 7px 0 #a84e14,
+        0 14px 25px #0004;
+}
+
+.main-btn:active{
+    transform:translateY(5px);
+
+    box-shadow:
+        0 2px 0 #a84e14;
+}
+
+
+/* =========================================================
+   HIGH SCORE
+========================================================= */
+
+.high-card{
+    position:relative;
+
+    z-index:5;
+
+    margin-top:20px;
+
+    min-width:220px;
+
+    padding:10px 18px;
+
+    border-radius:18px;
+
+    background:#063566dd;
+
+    border:
+        2px solid #ffffff33;
+
+    display:grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    gap:0 10px;
+
+    align-items:center;
+}
+
+.high-card span{
+    font-size:11px;
+    font-weight:800;
+
+    text-align:left;
+}
+
+.high-card b{
+    grid-column:2;
+
+    font-size:22px;
+}
+
+
+/* =========================================================
+   HOME HINT
+========================================================= */
+
+.hint{
+    position:absolute;
+
+    z-index:5;
+
+    bottom:
+        max(
+            12px,
+            env(safe-area-inset-bottom)
+        );
+
+    font-size:10px;
+
+    opacity:.85;
+}
+
+
+/* =========================================================
+   GAME SCREEN
+========================================================= */
+
+#gameScreen{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100dvh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:#64c8e6;
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+.hud{
+    position:absolute;
+
+    z-index:20;
+
+    top:max(
+        10px,
+        env(safe-area-inset-top)
+    );
+
+    left:8px;
+    right:58px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1.2fr;
+
+    gap:5px;
+}
+
+.hud div{
+    background:#062e5ccc;
+
+    border:
+        1px solid #ffffff33;
+
+    border-radius:12px;
+
+    padding:6px 8px;
+
+    text-align:center;
+
+    box-shadow:
+        0 4px 12px #0003;
+}
+
+.hud small{
+    display:block;
+
+    font-size:8px;
+
+    font-weight:800;
+}
+
+.hud b{
+    display:block;
+
+    font-size:18px;
+
+    color:#fff39b;
+}
+
+.hud div:nth-child(2) b{
+    color:#ffd23e;
+}
+
+.hud div:nth-child(3) b{
+    font-size:13px;
+
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   PAUSE BUTTON
+========================================================= */
+
+.small-btn{
+    position:absolute;
+
+    z-index:30;
+
+    top:max(
+        10px,
+        env(safe-area-inset-top)
+    );
+
+    right:8px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#fff2;
+
+    border:
+        2px solid #fff8;
+
+    color:#fff;
+
+    box-shadow:
+        0 5px 15px #0004;
+
+    font-size:22px;
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+/*
+   PENTING:
+   Game JavaScript = 420 × 700.
+   Canvas TIDAK boleh dipaksa 100% × 100%.
+*/
+
+#gameCanvas{
+    position:relative;
+
+    display:block;
+
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+    max-height:100%;
+
+    aspect-ratio:420 / 700;
+
+    background:#64c8e6;
+
+    touch-action:none;
+
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+
+/* Jangan gunakan .gameScreen canvas
+   karena HTML menggunakan #gameScreen */
+
+
+/* =========================================================
+   CONTROL BUTTON
+========================================================= */
+
+.controls{
+    position:absolute;
+
+    z-index:15;
+
+    bottom:
+        max(
+            12px,
+            env(safe-area-inset-bottom)
+        );
+
+    left:0;
+    right:0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    pointer-events:none;
+}
+
+.controls button{
+    pointer-events:auto;
+
+    width:78px;
+    height:64px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            #ffd75a,
+            #ff9b16
+        );
+
+    color:#fff;
+
+    font-size:32px;
+
+    font-weight:900;
+
+    text-shadow:
+        0 3px #9b4a11;
+
+    border:
+        3px solid #fff;
+
+    box-shadow:
+        0 6px 0 #a94d12,
+        0 8px 20px #0004;
+}
+
+.controls button:active{
+    transform:translateY(4px);
+
+    box-shadow:
+        0 2px 0 #a94d12;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:absolute;
+
+    inset:0;
+
+    z-index:50;
+
+    background:#04152ab8;
+
+    backdrop-filter:blur(5px);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+    width:min(340px,90vw);
+
+    padding:25px 22px;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #713c21,
+            #3d2115
+        );
+
+    border:
+        3px solid #ffcf59;
+
+    box-shadow:
+        0 20px 50px #0008;
+
+    text-align:center;
+}
+
+.panel h2{
+    margin:0 0 18px;
+
+    font-size:36px;
+
+    color:#ffd64d;
+
+    text-shadow:
+        0 4px #742e10;
+}
+
+.panel button{
+    display:block;
+
+    width:100%;
+
+    margin:10px 0;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    color:#fff;
+
+    font-weight:900;
+
+    font-size:18px;
+
+    box-shadow:
+        0 5px 0 #0005;
+}
+
+.green{
+    background:
+        linear-gradient(
+            #61e83c,
+            #20a925
+        );
+}
+
+.orange{
+    background:
+        linear-gradient(
+            #ffc340,
+            #ed7414
+        );
+}
+
+.blue{
+    background:
+        linear-gradient(
+            #55b8ff,
+            #1870d5
+        );
+}
+
+.sound-btn{
+    background:#ffffff22;
+
+    border:
+        1px solid #fff4;
+
+    font-size:14px!important;
+}
+
+
+/* =========================================================
+   GAME OVER
+========================================================= */
+
+.gameover h2{
+    font-size:40px;
+}
+
+.gameover p{
+    margin:7px 0 0;
+
+    font-size:13px;
+
+    opacity:.8;
+}
+
+.gameover > strong{
+    display:block;
+
+    font-size:30px;
+
+    color:#fff;
+}
+
+.new-high{
+    display:none;
+
+    color:#ffe34d;
+
+    font-weight:900;
+
+    margin:12px 0;
+
+    animation:
+        pulse .8s infinite alternate;
+}
+
+.new-high.show{
+    display:block;
+}
+
+.confetti{
+    font-size:28px;
+
+    color:#ffcc4d;
+}
+
+.panel.gameover{
+    animation:
+        pop .35s ease-out;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes idle{
+
+    50%{
+        transform:
+            translateY(-8px)
+            rotate(1deg);
+    }
+
+}
+
+@keyframes pop{
+
+    from{
+        transform:scale(.75);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+@keyframes pulse{
+
+    to{
+        transform:scale(1.06);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+========================================================= */
+
+@media (min-width:600px){
+
+    #gameScreen{
+        width:min(480px,100%);
+
+        left:50%;
+        right:auto;
+
+        transform:
+            translateX(-50%);
+
+        box-shadow:
+            0 0 50px #0006;
+    }
+
+    #homeScreen{
+        width:min(480px,100%);
+
+        left:50%;
+        right:auto;
+
+        transform:
+            translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:599px){
+
+    #gameScreen{
+        padding:5px;
+    }
+
+
+    /*
+       Canvas mengikuti tinggi layar,
+       bukan dipaksa memenuhi lebar.
+    */
+
+    #gameCanvas{
+        width:auto;
+        height:auto;
+
+        max-width:100%;
+
+        max-height:
+            calc(100dvh - 10px);
+
+        aspect-ratio:420 / 700;
+    }
+
+
+    /*
+       Swipe menjadi kontrol utama.
+    */
+
+    .controls{
+        display:none!important;
+    }
+
+
+    .hud{
+        top:6px;
+
+        left:6px;
+        right:48px;
+
+        gap:4px;
+    }
+
+    .hud div{
+        padding:5px 5px;
+
+        border-radius:9px;
+    }
+
+    .hud small{
+        font-size:7px;
+    }
+
+    .hud b{
+        font-size:13px;
+    }
+
+    .hud div:nth-child(3) b{
+        font-size:11px;
+    }
+
+
+    .small-btn{
+        top:6px;
+        right:6px;
+
+        width:36px;
+        height:36px;
+
+        font-size:17px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width:479px){
+
+    #gameScreen{
+        padding:3px;
+    }
+
+    #gameCanvas{
+        max-width:100%;
+
+        max-height:
+            calc(100dvh - 6px);
+    }
+
+    .hud{
+        top:5px;
+        left:5px;
+        right:45px;
+    }
+
+    .hud small{
+        font-size:6px;
+    }
+
+    .hud b{
+        font-size:11px;
+    }
+
+    .hud div:nth-child(3) b{
+        font-size:10px;
+    }
+
+    .small-btn{
+        top:5px;
+        right:5px;
+
+        width:34px;
+        height:34px;
+
+        font-size:15px;
+    }
+
+
+    /* HOME */
+
+    .brand{
+        margin-top:5vh;
+
+        font-size:
+            clamp(
+                30px,
+                9vw,
+                48px
+            );
+    }
+
+    .tagline{
+        font-size:10px;
+
+        padding:7px 14px;
+    }
+
+    .mascot-home{
+        transform:scale(.70);
+
+        margin-top:-5px;
+
+        margin-bottom:-35px;
+    }
+
+    .main-btn{
+        width:190px;
+
+        padding:14px;
+
+        font-size:21px;
+    }
+
+    .high-card{
+        min-width:210px;
+
+        margin-top:10px;
+    }
+
+    .hint{
+        display:none;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width:359px){
+
+    .brand{
+        font-size:30px;
+
+        margin-top:4vh;
+    }
+
+    .mascot-home{
+        transform:scale(.60);
+
+        margin-top:-15px;
+
+        margin-bottom:-55px;
+    }
+
+    .main-btn{
+        width:175px;
+
+        padding:12px;
+
+        font-size:19px;
+    }
+
+    .high-card{
+        min-width:195px;
+
+        padding:8px 12px;
+    }
+
+    .hud b{
+        font-size:10px;
+    }
+
+    .hud div:nth-child(3) b{
+        font-size:9px;
+    }
+
+}
+
+
+/* =========================================================
+   SHORT SCREEN
+========================================================= */
+
+@media (max-height:650px){
+
+    .brand{
+        margin-top:3vh;
+    }
+
+    .mascot-home{
+        transform:scale(.70);
+
+        margin-top:-10px;
+
+        margin-bottom:-45px;
+    }
+
+    .high-card{
+        margin-top:8px;
+    }
+
+    .hint{
+        display:none;
+    }
+
+}
+
+
+/* =========================================================
+   SHORT + SMALL PHONE
+========================================================= */
+
+@media (max-width:599px) and (max-height:650px){
+
+    #gameCanvas{
+        max-height:
+            calc(100dvh - 6px);
+    }
+
+    .hud{
+        top:4px;
+    }
+
+    .small-btn{
+        top:4px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONE
+========================================================= */
+
+@media (
+    max-width:899px
+) and (
+    max-height:500px
+) and (
+    orientation:landscape
+){
+
+    #gameScreen{
+        padding:3px;
+    }
+
+    #gameCanvas{
+        width:auto;
+        height:calc(100dvh - 6px);
+
+        max-width:100%;
+        max-height:calc(100dvh - 6px);
+
+        aspect-ratio:420 / 700;
+    }
+
+    .controls{
+        display:none!important;
+    }
+
+    .hud{
+        top:4px;
+
+        left:4px;
+        right:45px;
+    }
+
+    .small-btn{
+        top:4px;
+        right:4px;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICE
+========================================================= */
+
+@media (hover:none) and (pointer:coarse){
+
+    #gameCanvas{
+        touch-action:none;
+    }
+
+    button{
+        -webkit-tap-highlight-color:transparent;
+    }
+
+}
